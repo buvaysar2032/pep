@@ -2,7 +2,7 @@
 
 /** @var yii\web\View $this */
 
-$this->title = Yii::$app->name;
+$this->title = Yii::$app->name . ' ' . $title;
 ?>
 
 <section class="bg-text-area">
@@ -36,21 +36,21 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <?php foreach ($posts as $post): ?>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <?= \yii\helpers\Html::img("@web/{$post->img}") ?>
+                    <div class="col-md-3">
+                        <div class="single-post">
+                            <?= \yii\helpers\Html::img("@web/{$post->img}") ?>
                             <h3><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?></a></h3>
-                        <h4>
+                            <h4>
                             <span>Category:
                                 <span class="author-name">
                                     <a href="<?= \yii\helpers\Url::to(['category/view', 'alias' => $post->category->alias]) ?>"><?= $post->category->title ?></a>
                                 </span>
                             </span>
-                        </h4>
-                        <?= $post->excertp ?>
-                        <h4><span><?= Yii::$app->formatter->asDate($post->created_at, 'php:d.m.Y') ?></span></h4>
+                            </h4>
+                            <?= $post->excertp ?>
+                            <h4><span><?= Yii::$app->formatter->asDate($post->created_at, 'php:d.m.Y') ?></span></h4>
+                        </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -62,12 +62,12 @@ $this->title = Yii::$app->name;
             <?= \yii\widgets\LinkPager::widget([
                 'pagination' => $pages,
             ]) ?>
-<!--            <span class="page-numbers current">1</span>-->
-<!--            <a class="page-numbers" href="#">2</a>-->
-<!--            <a class="page-numbers" href="#">3</a>-->
-<!--            <a class="page-numbers" href="#">4</a>-->
-<!--            <a class="page-numbers" href="#">5</a>-->
-<!--            <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>-->
+            <!--            <span class="page-numbers current">1</span>-->
+            <!--            <a class="page-numbers" href="#">2</a>-->
+            <!--            <a class="page-numbers" href="#">3</a>-->
+            <!--            <a class="page-numbers" href="#">4</a>-->
+            <!--            <a class="page-numbers" href="#">5</a>-->
+            <!--            <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>-->
         </div>
     </div>
 </section>

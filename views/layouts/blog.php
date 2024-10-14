@@ -14,6 +14,7 @@ $this->registerCsrfMetaTags();
 <html lang="<?= Yii::$app->language ?>">
 
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= Html::encode($this->title) ?></title>

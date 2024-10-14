@@ -2,16 +2,18 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use app\models\Post;
 use yii\data\Pagination;
 use yii\web\Controller;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
-    public function actionIndex()
+
+    public function actionView($alias)
     {
-        //$posts = Post::find()->all();
-        $query = Post::find()->with('category');
+        $category = Category::findOne(['alias' => $alias]);
+        $query = Post::find()->with('category')->where(['category_id' => $category->id]);
         $pages = new Pagination([
             'totalCount' => $query->count(),
             'pageSize' => 4,
@@ -19,13 +21,7 @@ class PostController extends Controller
             'pageSizeParam' => false
         ]);
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('index', compact('posts', 'pages'));
-    }
-
-    public function actionView($id)
-    {
-        $post = Post::findOne($id);
-
-        return $this->render('view', ['post' => $post]);
+        $title = $category->title;
+        return $this->render('index2', compact('posts', 'pages', 'title'));
     }
 }
