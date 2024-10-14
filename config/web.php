@@ -16,6 +16,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'php:d F Y',
+        ],
         'assetManager' => [
             'appendTimestamp' => true
         ],
